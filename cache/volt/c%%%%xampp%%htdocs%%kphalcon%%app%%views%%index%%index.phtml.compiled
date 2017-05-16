@@ -46,17 +46,17 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
 
 
                     <div id="cards" class="cards">
-                        {% for mediabrons in mediabrons %}
+                        <?php foreach ($mediabrons as $mediabrons) { ?>
                             <div class="card card--alpha" style="height: 483px;">
                                 <?php
                                         $mediaid = $mediabrons->media_id;
                                     ?>
                                     <a href="mediaplayer/playbrons?id=<?php echo $mediaid;?>">  
-                                    <img src="/kphalcon/public/img/thumbnail/{{ mediabrons.thumbnail }}.jpg" height="200" width="300"></img>
+                                    <img src="/kphalcon/public/img/thumbnail/<?= $mediabrons->thumbnail ?>.jpg" height="200" width="300"></img>
 
                                     </a>  
                                 <div class="card__content">
-                                    <h5 class="card__title">{{mediabrons.titel}}<br>
+                                    <h5 class="card__title"><?= $mediabrons->titel ?><br>
                                     <span class="text">                                        
                                                     <?php
                                                         $mediabrons = mediabrons::findFirstBymedia_id($mediaid);
@@ -71,12 +71,12 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
                                                     ?>
                                         </span>
                                         </h5>
-                                    <p class="card__intro" data-ellipsis="" style="word-wrap: break-word;">{{mediabrons.description}}</p>
+                                    <p class="card__intro" data-ellipsis="" style="word-wrap: break-word;"><?= $mediabrons->description ?></p>
                                     <ul class="list-inline">
                                         <li><a data-show-article="" class="btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha" href="mediaplayer/playbrons?id=<?php echo $mediaid;?>">Bekijk Masterclass</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            {% endfor %}
+                            <?php } ?>
                     </div>
 

@@ -6,9 +6,9 @@ function reveal_schools()
         
     if(document.getElementById('roles_id').value === '1' || document.getElementById('roles_id').value === '2')
     {
-            document.getElementById('school_id').form['2'].style.display='block';
+            document.getElementById('school_id').form['1'].style.display='block';
     } else {
-            document.getElementById('school_id').form['2'].style.display='none';
+            document.getElementById('school_id').form['1'].style.display='none';
     }
 
 }
@@ -16,17 +16,17 @@ function reveal_schools()
 function reveal_entrepreneur_form()
 {
     if (document.getElementById('roles_id').value === '1' || document.getElementById('roles_id').value === '2'){
-        document.getElementById('companies').form['3'].style.display='none';
-        document.getElementById('aEmail').form['6'].style.display='block';
-        document.getElementById('bEmail').form['7'].style.display='block';
-        document.getElementById('email').form['8'].style.display='none';
+        document.getElementById('companies').form['2'].style.display='none';
+        document.getElementById('aEmail').form['5'].style.display='block';
+        document.getElementById('bEmail').form['6'].style.display='block';
+        document.getElementById('email').form['7'].style.display='none';
         
     }
    if (document.getElementById('roles_id').value === '3'){
-        document.getElementById('companies').form['3'].style.display='block';
-        document.getElementById('aEmail').form['6'].style.display='none';
-        document.getElementById('bEmail').form['7'].style.display='none';
-        document.getElementById('email').form['8'].style.display='block';
+        document.getElementById('companies').form['2'].style.display='block';
+        document.getElementById('aEmail').form['5'].style.display='none';
+        document.getElementById('bEmail').form['6'].style.display='none';
+        document.getElementById('email').form['7'].style.display='block';
         
     }
 }

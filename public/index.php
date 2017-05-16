@@ -11,20 +11,6 @@ use Phalcon\Session\Adapter\Files as Session;
 
 // ...
 
-require_once __DIR__ . '\mpdf\vendor\autoload.php';
-require_once __DIR__ . '\mpdf\mpdf.php';
-require_once __DIR__ . '\swiftmailer-5.x\lib\swift_required.php';
-
-// Create the Transport
-$transport = Swift_SmtpTransport::newInstance('smtp.kvnmasterclasses.nl', 25)
-  ->setUsername('e')
-  ->setPassword('e')
-  ;
-
-// Create the Mailer using your created Transport
-$mailer = Swift_Mailer::newInstance($transport);
-
-
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -92,9 +78,9 @@ $di->set(
     function () {
         return new DbAdapter(
             [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "",
+                "host"     => "localhost:3306",
+                "username" => "kweekvn",
+                "password" => "mgHKbC2Xx9um",
                 "dbname"   => "kphalcon",
                 "charset"  => "utf8",
             ]
@@ -109,7 +95,7 @@ $di->set(
     function () {
         $url = new UrlProvider();
 
-        $url->setBaseUri('/kphalcon/');
+        $url->setBaseUri('/html/');
 
         return $url;
     }

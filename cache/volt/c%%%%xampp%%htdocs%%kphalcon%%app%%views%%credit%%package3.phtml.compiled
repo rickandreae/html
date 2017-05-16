@@ -7,10 +7,10 @@
 	<div class="container container-beta">
 	<h6>Weet je zeker dat je 15 tickets wil aanschaffen?</h6>
 		<p>Om bij een masterclass aanwezig te kunnen zijn hebt u een ticket nodig. Deze kunt u hier aanschaffen. Hoe meer tickets u aanschaft, des te goedkoper ze worden.</p>
-		{{ form("session/buycredit") }} 
-		{{ text_field("credits", "value": "15", "style":"display:none")}}
-		{{ submit_button("Tickets aanschaffen", "class": "btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha") }}
-		{{ end_form() }}
+		<?= $this->tag->form(['session/buycredit']) ?> 
+		<?= $this->tag->textField(['credits', 'value' => '15', 'style' => 'display:none']) ?>
+		<?= $this->tag->submitButton(['Tickets aanschaffen', 'class' => 'btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha']) ?>
+		<?= $this->tag->endForm() ?>
 	</div>
 </div>		
 

@@ -38,8 +38,6 @@ $credits = credits::find("");
     <h2 class="centertext">Registreren</h2>
     <div class="inlog">
 
-        {{ select("credits", credits, "using": ["credit_value", "credit_value"], "useEmpty" : true, "emptyText": "Kies aantal tickets..", "emptyValue":"@")}}
-
         {{ select("roles_id", roles, "using": ["roles_id", "roles_type"],  "class": "form-control",  "useEmpty" : true, "emptyText": "Kies..", "emptyValue":"@", "onchange" : "reveal_schools(); reveal_entrepreneur_form();") }}
         
         {{ select("school_id", schools, "using": ["school_id", "school_name"], "useEmpty": true, "emptyText": "Kies uw school...", "emptyValue": "@", "class": "form-control", "style" : "display:none;", "onchange" : "set_input_value();" ) }}

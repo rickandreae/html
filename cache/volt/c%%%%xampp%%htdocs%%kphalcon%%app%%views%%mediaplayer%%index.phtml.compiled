@@ -36,17 +36,17 @@
             <section class="section section--alpha"> 
                 <div class="container">    
                     <div id="cards" class="cards">
-                                {% for mediabrons in mediabrons %}
+                                <?php foreach ($mediabrons as $mediabrons) { ?>
                                  <div class="card card--alpha" style="height: 483px;">
                                     <?php $mediaid = $mediabrons->media_id; ?> 
                                     <h6 style="position:absolute; float:right;">
                                     </h6> 
                                         <a href="playbrons?id=<?php echo $mediaid;?>">  
-                                            <img src="/kphalcon/public/img/thumbnail/{{ mediabrons.thumbnail }}.jpg" height="200"   width="300">
+                                            <img src="/kphalcon/public/img/thumbnail/<?= $mediabrons->thumbnail ?>.jpg" height="200"   width="300">
                                             </img>
                                         </a>
                                     <div class="card__content">
-                                        <h5 class="card__title">{{mediabrons.titel}}<br>
+                                        <h5 class="card__title"><?= $mediabrons->titel ?><br>
                                         <span class="text">
                                                     <?php
                                                     
@@ -63,13 +63,13 @@
                                                     ?>
                                         </span>
                                                 </h5>
-                                        <p class="card__intro" data-ellipsis="" style="word-wrap: break-word;">{{mediabrons.description}}</p>
+                                        <p class="card__intro" data-ellipsis="" style="word-wrap: break-word;"><?= $mediabrons->description ?></p>
                                         <ul class="list-inline">
                                             <a data-show-article="" class="btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha" href="playbrons?id=<?php echo $mediaid;?>">bekijk masterclass</a>
                                         </ul>
                                 </div>    
                             </div>
-                      {% endfor %} 
+                      <?php } ?> 
                 </div>
             </div>
         </div>

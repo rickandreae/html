@@ -2,9 +2,9 @@
 $show = $this->session->get('mediaid');
 $media = mediabrons::findFirstBymedia_id($show['id']);
 ?>
-<header id="header" class="header" data-extension="Contact" style="background-image: url('../img/header/{{ media.header }}.jpg');">
+<header id="header" class="header" data-extension="Contact" style="background-image: url('../img/header/<?= $media->header ?>.jpg');">
 
-{% if auth %}
+<?php if ($auth) { ?>
 <?php $a = '' ?>
 <?php if (property_exists($single, 'user_id')):?>
 <?php foreach($single->Products as $p): ?>
@@ -21,7 +21,7 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
             
             
             <div class="container-beta">  
-            <a style="outline:0;" data-fancybox data-src="{{ media.videos }}" href="javascript:;">
+            <a style="outline:0;" data-fancybox data-src="<?= $media->videos ?>" href="javascript:;">
              <img class="blink" style="display:block; margin:auto; margin-top:200px;" src="../img/playbutton.png" height="auto" width="auto"></img>
             </a>
             </div>
@@ -48,9 +48,9 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
             </div>
 </div>            
 <?php endif ?>
-{% endif %}
+<?php } ?>
 
-{%if auth == false%}
+<?php if ($auth == false) { ?>
    <div class="container header__container">
 
             <div class="header__inner header__inner--large">
@@ -65,15 +65,15 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
 
             </div>
 </div>  
-{%endif%}
+<?php } ?>
 </header>
 </header>
 <section class="section section--alpha no-top-padding ">
 <div class="container container-beta">
 <div class="grid">
 <div class="column-12 ">
-<h1><span class="color-beta">{{media.titel}}</span><br><span class="subtitel">{{media.subtitel}}</span></h1>
-<p class="text">{{media.description}}</p>
+<h1><span class="color-beta"><?= $media->titel ?></span><br><span class="subtitel"><?= $media->subtitel ?></span></h1>
+<p class="text"><?= $media->description ?></p>
 <p class="datepos">
     <?php
         $mediabrons = mediabrons::findFirstBymedia_id($show['id']);
@@ -91,42 +91,42 @@ $media = mediabrons::findFirstBymedia_id($show['id']);
 <h6>Als u een ticket heeft gekocht kunt u hier aangeven of u ook aanwezig zult zijn bij de masterclass.</h6>
 
 <h6>Hier ziet u hoeveel plaatsen er nog beschikbaar zijn.</h6>
-{% if media.student_plaatsen > 0 %}
+<?php if ($media->student_plaatsen > 0) { ?>
 <h6>
 student plaatsen:
-{{media.student_plaatsen}}
-{% if auth %}
+<?= $media->student_plaatsen ?>
+<?php if ($auth) { ?>
 <div>
     <a href="../session/reserve?id=<?php echo $show['id'];?>">
         Aanmelden voor masterclass
     </a>
 </div>
-{% endif %}
+<?php } ?>
 </h6>
-{% else %}
+<?php } else { ?>
 <h6>student plaatsen: Alle plaatsen zijn bezet.</h6>
-{% endif %}
+<?php } ?>
 <h6>
 docent plaatsen:
-{{media.docent_plaatsen}}
-{% if auth %}
+<?= $media->docent_plaatsen ?>
+<?php if ($auth) { ?>
 <div>
     <a href="">
         Aanmelden voor masterclass
     </a>
 </div>
-{% endif %}
+<?php } ?>
 </h6>
 <h6>
 ondernemer plaatsen:
-{{media.ondernemer_plaatsen}}
-{% if auth %}
+<?= $media->ondernemer_plaatsen ?>
+<?php if ($auth) { ?>
 <div>
     <a href="">
         Aanmelden voor masterclass
     </a>
 </div>
-{% endif %}
+<?php } ?>
 </h6>
 </div>
 </div>
@@ -145,13 +145,13 @@ ondernemer plaatsen:
                     <?php foreach($single2->Submedia as $p):?>
                         <div class="card card--alpha" style="height: 483px;">
                             <?php $media = submedia::findFirstByid($p->id);?>
-                                <a style="outline:0;" data-fancybox data-src="{{media.subvideos}}" href="javascript:;">  
+                                <a style="outline:0;" data-fancybox data-src="<?= $media->subvideos ?>" href="javascript:;">  
                                     <img src="/kphalcon/public/img/thumbnail/<?php echo $p->thumbnail;?>.jpg" height="200" width="300"></img>
                                 </a>
                         <div class="card__content">
-                            <h5 class="card__title">{{p.titel}} </h5>
+                            <h5 class="card__title"><?= $p->titel ?> </h5>
                                 <ul class="list-inline">
-                <a style="outline:0;" data-fancybox class="btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha" data-src="{{media.subvideos}}" href="javascript:;">bekijk video</a>
+                <a style="outline:0;" data-fancybox class="btn btn--ghost btn--epsilon btn--right-arrow btn--medium icon icon--right-open-1 icon--margin-alpha" data-src="<?= $media->subvideos ?>" href="javascript:;">bekijk video</a>
 
         </ul>
         </div>    
